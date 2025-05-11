@@ -6,43 +6,31 @@
   <title>Gold Alloy Calculator</title>
   <style>
     *{box-sizing:border-box}
-	html,body{margin:0;padding:0;overflow:hidden;font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;background:#121212;color:#fff;height:100%}
-	h2,h3{text-align:center;color:#ffd700}body{display:flex;flex-direction:column}
-	.ad-container{text-align:center;background:#1e1e1e;height:50px;flex-shrink:0}
-	.main-content{flex:1;display:flex;flex-direction:column;padding:10px 15px 50px;overflow-y:auto}
-	.tab-buttons{display:flex;justify-content:center;background:#1f1f1f;border-bottom:2px solid #333;flex-shrink:0;margin-top:20px}
-	.tab-button{flex:1;padding:12px;text-align:center;cursor:pointer;background:#1f1f1f;color:#ccc;border:none;font-size:16px}
-	.tab-button.active{background:#ff9800;color:#000;font-weight:bold}
-	.tab-content{display:none;flex-grow:1}
-	.tab-content.active{display:block}
-	.form-group{margin-bottom:20px}
-	label{display:block;margin-bottom:6px;color:#ccc;font-size:20px}
-	input[type=number]{width:100%;padding:10px;border:none;border-radius:6px;font-size:16px;background:#1e1e1e;color:#fff}
-	input[type=number]::-webkit-inner-spin-button,input[type=number]::-webkit-outer-spin-button{-webkit-appearance:none;margin:0}
-	input[type=number]{-moz-appearance:textfield}
-	.btn{width:100%;padding:12px;background:#ff9800;border:none;border-radius:6px;color:#000;font-size:16px;font-weight:bold;cursor:pointer}
-	.result{margin-top:25px;padding:15px;background:#1f1f1f;border-left:4px solid #ffd700;border-radius:6px}
-	.result p{margin:10px 0;font-size:18px}
-	.result span{font-weight:bold;color:#00e676}
-	.karat-list p{font-size:16px;margin:10px 0;line-height:1.5;color:#ccc}
-	hr{height:1px;border-width:0;background:#333232}
+    html,body{margin:0;padding:0;overflow:hidden;font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;background:#121212;color:#fff;height:100%}
+    h2,h3{text-align:center;color:#ffd700}body{display:flex;flex-direction:column}
+    .ad-container{text-align:center;background:#1e1e1e;height:50px;flex-shrink:0}
+    .main-content{flex:1;display:flex;flex-direction:column;padding:10px 15px 50px;overflow-y:auto}
+    .tab-buttons{display:flex;justify-content:center;background:#1f1f1f;border-bottom:2px solid #333;flex-shrink:0;margin-top:20px}
+    .tab-button{flex:1;padding:12px;text-align:center;cursor:pointer;background:#1f1f1f;color:#ccc;border:none;font-size:16px}
+    .tab-button.active{background:#ff9800;color:#000;font-weight:bold}
+    .tab-content{display:none;flex-grow:1}
+    .tab-content.active{display:block}
+    .form-group{margin-bottom:20px;display:flex;flex-wrap:wrap;justify-content:space-between}
+    label{display:block;margin-bottom:6px;color:#ccc;font-size:20px}
+    input[type=number]{width:100%;padding:10px;border:none;border-radius:6px;font-size:16px;background:#1e1e1e;color:#fff;margin-top:5px;}
+    input[type=number]::-webkit-inner-spin-button,input[type=number]::-webkit-outer-spin-button{-webkit-appearance:none;margin:0}
+    input[type=number]{-moz-appearance:textfield}
+    .input-group{display:flex;justify-content:space-between;width:100%;}
+    .input-group div{width:48%;}
+    .btn{width:100%;padding:12px;background:#ff9800;border:none;border-radius:6px;color:#000;font-size:16px;font-weight:bold;cursor:pointer}
+    .result{margin-top:25px;padding:15px;background:#1f1f1f;border-left:4px solid #ffd700;border-radius:6px}
+    .result p{margin:10px 0;font-size:18px}
+    .result span{font-weight:bold;color:#00e676}
+    .karat-list p{font-size:16px;margin:10px 0;line-height:1.5;color:#ccc}
+    hr{height:1px;border-width:0;background:#333232}
   </style>
 </head>
 <body>
-<div><hr></div>
-<div class="ad-container">
-  <script type="text/javascript">
-	atOptions = {
-		'key' : 'b81044d8ac9a77aaad9bc47067e92de2',
-		'format' : 'iframe',
-		'height' : 50,
-		'width' : 320,
-		'params' : {}
-	};
-</script>
-<script type="text/javascript" src="//www.highperformanceformat.com/b81044d8ac9a77aaad9bc47067e92de2/invoke.js"></script>
-</div>
-<div><hr></div>
 <div class="tab-buttons">
   <button class="tab-button active" onclick="switchTab('calculator')">Calculator</button>
   <button class="tab-button" onclick="switchTab('karats')">Gold Karats</button>
@@ -51,18 +39,22 @@
   <div class="tab-content active" id="calculator">
     <h2>Gold Alloy Calculator</h2>
     <div class="form-group">
-      <label for="haveWeight">Have Weight (gm)</label>
-      <input type="number" id="haveWeight" placeholder="e.g. 100">
-    </div>
-    <div class="form-group">
-      <label for="havePurity">Have Purity (%)</label>
-      <input type="number" id="havePurity" placeholder="e.g. 99.9">
+      <div class="input-group">
+        <div>
+          <label for="haveWeight">Have Weight (gm)</label>
+          <input type="number" id="haveWeight" placeholder="e.g. 100" onkeydown="moveFocus(event, 'havePurity')" />
+        </div>
+        <div>
+          <label for="havePurity">Have Purity (%)</label>
+          <input type="number" id="havePurity" placeholder="e.g. 99.9" onkeydown="moveFocus(event, 'getPurity')" />
+        </div>
+      </div>
     </div>
     <div class="form-group">
       <label for="getPurity" style="color:greenyellow;">Get Purity (%)</label>
-      <input type="number" id="getPurity" placeholder="e.g. 91.6">
+      <input type="number" id="getPurity" placeholder="e.g. 91.6" onkeydown="moveFocus(event, 'calculate')" />
     </div>
-    <button class="btn" onclick="calculateAlloy()">Calculate</button>
+    <button class="btn" id="calculate" onclick="calculateAlloy()">Calculate</button>
     <div class="result" id="result"></div>
   </div>
   <div class="tab-content" id="karats">
@@ -80,36 +72,68 @@
 <div><hr></div>
 <div class="ad-container">
   <script type="text/javascript">
-	atOptions = {
-		'key' : 'b81044d8ac9a77aaad9bc47067e92de2',
-		'format' : 'iframe',
-		'height' : 50,
-		'width' : 320,
-		'params' : {}
-	};
-</script>
-<script type="text/javascript" src="//www.highperformanceformat.com/b81044d8ac9a77aaad9bc47067e92de2/invoke.js"></script>
+    atOptions = {
+      'key' : 'b81044d8ac9a77aaad9bc47067e92de2',
+      'format' : 'iframe',
+      'height' : 50,
+      'width' : 320,
+      'params' : {}
+    };
+  </script>
+  <script type="text/javascript" src="//www.highperformanceformat.com/b81044d8ac9a77aaad9bc47067e92de2/invoke.js"></script>
 </div>
 <div><hr></div>
 <script>
-function calculateAlloy(){
-  const w=parseFloat(document.getElementById('haveWeight').value),
-        hp=parseFloat(document.getElementById('havePurity').value),
-        gp=parseFloat(document.getElementById('getPurity').value),
-        res=document.getElementById('result');
-  if(isNaN(w)||isNaN(hp)||isNaN(gp)||w<=0||hp<=0||gp<=0){
-    res.innerHTML="<p style='color:#ff5252;'>Please enter valid positive numbers.</p>";
+function moveFocus(event, nextFieldId) {
+  if (event.key === "Enter") {
+    const nextField = document.getElementById(nextFieldId);
+    if (nextField) {
+      nextField.focus();
+    }
+  }
+}
+
+function calculateAlloy() {
+  const w = parseFloat(document.getElementById('haveWeight').value),
+        hp = parseFloat(document.getElementById('havePurity').value),
+        gp = parseFloat(document.getElementById('getPurity').value),
+        res = document.getElementById('result');
+  
+  if (isNaN(w) || isNaN(hp) || isNaN(gp) || w <= 0 || hp <= 0 || gp <= 0) {
+    res.innerHTML = "<p style='color:#ff5252;'>Please enter valid positive numbers.</p>";
     return;
   }
-  const pure=w*(hp/100),final=pure/(gp/100);
-  let alloy=0;
-  if(gp<hp) alloy=final-w;
-  res.innerHTML=`<p>Total Final Weight: <span>${final.toFixed(3)} gm</span></p><p>Alloy to Add: <span>${alloy.toFixed(3)} gm</span></p>`;
+
+  let alloy = 0;
+  let finalWeight = 0;
+
+  // Case 1: Adding pure 100% gold to increase purity
+  if (gp > hp) {
+    alloy = (w * (gp - hp)) / (100 - gp);
+    finalWeight = w + alloy;
+    res.innerHTML = `
+      <p><strong>Condition: Add Pure 100% Gold</strong></p>
+      <p>Pure 100% Gold to Add: <span>${alloy.toFixed(3)} gm</span></p>
+	  <p>Total Final Weight: <span>${finalWeight.toFixed(3)} gm</span></p>
+    `;
+  }
+  // Case 2: Adding lower purity alloy to decrease purity
+  else if (gp < hp) {
+    alloy = (w * (hp - gp)) / gp;
+    finalWeight = w + alloy;
+    res.innerHTML = `
+      <p><strong>Condition: Add Alloy to Reduce Purity</strong></p>
+      <p>Alloy to Add: <span>${alloy.toFixed(3)} gm</span></p>
+	  <p>Total Final Weight: <span>${finalWeight.toFixed(3)} gm</span></p>
+    `;
+  }
 }
-function switchTab(id){
-  const tabs=document.querySelectorAll('.tab-content'),btns=document.querySelectorAll('.tab-button');
-  tabs.forEach(t=>t.classList.remove('active'));
-  btns.forEach(b=>b.classList.remove('active'));
+
+function switchTab(id) {
+  const tabs = document.querySelectorAll('.tab-content');
+  const btns = document.querySelectorAll('.tab-button');
+  tabs.forEach(t => t.classList.remove('active'));
+  btns.forEach(b => b.classList.remove('active'));
   document.getElementById(id).classList.add('active');
   event.target.classList.add('active');
 }
